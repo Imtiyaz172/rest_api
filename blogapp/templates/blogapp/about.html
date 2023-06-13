@@ -1,0 +1,206 @@
+{% extends 'blogapp/base.html' %}
+{% load staticfiles %}
+{% load data_load %}
+{% block meta_description %} {{ seo_contain.about_us_description }} {% endblock %}
+{% block meta_keywords %} {{ seo_contain.about_us_keywords }} {% endblock %}
+{% block meta_title %} {{ seo_contain.about_us_title }} {% endblock %}
+{% block content %}	
+
+        <div class="wrapper" style="margin-top: 200px">
+            
+            <!-- Header End -->
+            
+            
+
+            {% comment %} <!-- About Start -->
+            <div class="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="about-img">
+                                <img src="{% static 'blogapp/media/about.png' %}" alt="Image">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="about-text">
+                                <h2><span>10</span> Years Experience</h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
+                                </p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
+                                </p>
+                                <a class="btn" href="">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About End --> {% endcomment %}
+
+
+            <!-- Story Start -->
+            <div class="story">
+                <div class="container">
+                    <div class="section-header">
+                        
+                        <center><h2>Full knowledge about our Website</h2></center>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="story-container">
+                                <div class="story-end">
+                                    <p>In Website</p>
+                                </div>
+                                <div class="story-continue">
+
+                                    <div class="row story-right">
+                                        <div class="col-md-6">
+                                            <p class="story-date">
+                                                Populer Pgramming languages
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="story-box">
+                                                <div class="story-text">
+                                                    <h3>Select your Favorite langulage</h3>
+                                                    <p>
+                                                        We provide all popular programming language's Quiz what is needed every day in a programming life and for a programmer.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row story-left">
+                                        
+                                        <div class="col-md-6">
+                                            <div class="story-box">
+                                                <div class="story-text">
+                                                    <h3>Select your topic which you test</h3>
+                                                    <p>
+                                                        We provide all topics in selected language that you have to know to be a perfect programmer.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 d-md-block d-none">
+                                            <p class="story-date">
+                                               All popular and unique topic in programming language
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <div class="row story-right">
+                                        <div class="col-md-6">
+                                            <p class="story-date">
+                                                Easy, Mid, Advance all types question are available
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="story-box">
+                                                <div class="story-text">
+                                                    <h3>Judge how many advance you are in a topic </h3>
+                                                    <p>
+                                                        Easy, medium, Hard all types quiz is available in every topic of programming language.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="story-year">
+                                                <p>In User Panel</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row story-left">
+                                        
+                                        <div class="col-md-6">
+                                            <div class="story-box">
+                                                <div class="story-text">
+                                                    <h3>All history check</h3>
+                                                    <p>
+                                                        You can see all your history that your answer is wrong or right and how much time you take to answer the question.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 d-md-block d-none">
+                                            <p class="story-date">
+                                                your history that you answared
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+
+
+                                    <div class="row story-right">
+                                        <div class="col-md-6">
+                                            <p class="story-date">
+                                                Topic wise result
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="story-box">
+                                                <div class="story-text">
+                                                    <h3>Judge every topic's strength and weakness</h3>
+                                                    <p>
+                                                        You can see the topic's result. how many questions you answered and how many are right or wrong
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row story-left">
+                                        
+                                        <div class="col-md-6">
+                                            <div class="story-box">
+                                                <div class="story-text">
+                                                    <h3>Know your Improvement in every topic</h3>
+                                                    <p>
+                                                        We provide you as per your knowledge what is your progress in Improvement that helps you make a professional programmer
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 d-md-block d-none">
+                                            <p class="story-date">
+                                                Improvement
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
+                                <div class="story-start">
+                                    <p>Overall</p>
+                                </div>
+                                <div class="story-launch">
+                                    <div class="story-box">
+                                        <div class="story-text">
+                                            <h3>You can check your best ability in programming</h3>
+                                            <p>
+                                                We can't make you the best programmer. But we can help you to take this way how you have to do it and how far you are from it. Stay with us.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Story End -->
+
+
+           
+
+
+
+{% endblock %}

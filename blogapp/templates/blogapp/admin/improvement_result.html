@@ -1,0 +1,67 @@
+{% extends 'blogapp/admin/base.html' %}
+{% load staticfiles %}
+{% load data_load %}
+{% block meta_description %} {{ seo_contain.seo_discription }} {% endblock %}
+{% block meta_keywords %} {{ seo_contain.seo_keyword }} {% endblock %}
+{% block meta_title %} {{ seo_contain.seo_title }} {% endblock %}
+{% block content %}
+
+        <!-- Static Table Start -->
+        <div class="data-table-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sparkline13-list">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>In This <span class="table-project-n">Topic</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control dt-tb">
+											<option value="">Export Basic</option>
+											<option value="all">Export All</option>
+											<option value="selected">Export Selected</option>
+										</select>
+                                    </div>
+                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th > First 25 Attempt Right Answer </th>
+                                                <th >Secound 25 Attempt Right Answer </th>
+                                                <th >After 50 Attempt Right Answer </th>
+                                                {% comment %} <th data-field="phone" data-editable="true">অধ্যায়</th>       
+                                                <th data-field="task" data-editable="true">শ্রেণি</th>
+                                                <th data-field="date" data-editable="true">উত্তর দিয়েছেন</th>
+                                                <th data-field="price" data-editable="true">সময় নিয়েছেন</th>
+                                                <th data-field="action">ঠিক/ভুল</th> {% endcomment %}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <tr> 
+                                                   
+                                                   <td>{{correct_count25}} <span class="pie">{{correct_count25}}/25</span></td>
+                                                   
+                                                   <td>{{correct_count50}} <span class="pie">{{correct_count50}}/50</span></td>
+
+                                                   <td>{{correct_count}} <span class="pie">{{correct_count}}/{{all_ques_c}}</span></td>
+                                                   
+                                                    
+                                                    
+                                                </tr>
+                                              
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

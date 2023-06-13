@@ -1,0 +1,385 @@
+{% extends 'blogapp/base.html' %}
+{% load staticfiles %}
+{% load data_load %}
+
+{% block meta_title %}
+{% regroup seo_contain by classsubject as classsubject_list %}
+{% for classsubject in classsubject_list %}
+{{ classsubject.grouper.seo_title }}
+{% endfor %}
+{% endblock %}
+
+{% block meta_description %}
+{% regroup seo_contain by classsubject as classsubject_list %}
+{% for classsubject in classsubject_list %}
+{{ classsubject.grouper.seo_discription }}
+{% endfor %}
+{% endblock %}
+
+{% block meta_keywords %}
+{% regroup seo_contain by classsubject as classsubject_list %}
+{% for classsubject in classsubject_list %}
+{{ classsubject.grouper.seo_keyword }}
+{% endfor %}
+{% endblock %}
+
+{% block content %}	
+	
+	<!-- Home -->
+	<!-- Language -->
+
+<div class="language">
+		<div class="tab_panels">
+				
+				<ul class="nav nav-pills nav-fill navtop">
+				<li class="nav-item">
+						<a class="nav-link active fa fa-question-circle-o" href="#menu2" data-toggle="tab" style=" font-size:20px" > Test</a >
+					</li>
+					<li class="nav-item">
+						<a class="nav-link  fa fa-info" href="#menu1" data-toggle="tab" style=" font-size:20px"> Learn</a>
+					</li>
+					
+					
+				</ul>
+				<div class="tab-content ">
+
+					
+
+
+					<div class="tab-pane active" role="tabpanel" id="menu2">
+					<div class="tab_panels">
+					
+							<ul class="nav nav-pills nav-fill navtop">
+								<li class="nav-item">
+									<a class="nav-link active fa fa-battery-empty" href="#menu6" data-toggle="tab" style=" font-size:20px"> Basic</a>
+								</li>
+								<li class="nav-item">
+									
+										<a class="nav-link fa fa-battery-half"  href="#menu7" data-toggle="tab" style=" font-size:20px" > MID</a >
+									
+									
+								</li>
+								<li class="nav-item">
+									{% if request.session.email %}
+										<a class="nav-link fa fa-battery-full" href="#menu8" data-toggle="tab" style=" font-size:20px" > Advance</a >
+									{% else %}
+										<div class="nav-link fa fa-battery-full" aria-hidden="true">  Advance<span class="tooltiptext" >Login for Unlock</span></i></div>
+									{% endif %}
+								</li>
+								
+							</ul>
+						<div class="tab-content ">
+
+								<div class="tab-pane active" role="tabpanel" id="menu6" style="margin:50px 50px">			 
+																	
+										<div class="container">
+											<div class="row">									
+													{% for question in questions_list %}
+														{% if question.ques_level == "Easy" %}
+														
+															<div class="col-sm-4">
+																<ul>			
+																	<div class="teacher d-flex flex-row align-items-center justify-content-start">					
+																	<li><div class="teacher_title "><a  href="/list/{{question.classsubject.classes|str2url}}/{{question.classsubject.subject|str2url}}/{{question.ques_level|str2url}}/{{question.id}}">{{forloop.counter}}. {{question.title}}</a></div></li>
+																	</div>
+																<ul>
+															</div>
+														{% endif %}
+													{% endfor %}
+											</div>
+										
+									</div>
+							</div>			 
+					<div class="tab-pane" role="tabpanel" id="menu7" style="margin:50px 50px">			 
+														
+										<div class="container">
+											<div class="row">	
+											{% if request.session.email %}								
+													{% for question in questions_list %}
+														{% if question.ques_level == "Medium" %}
+															<div class="col-sm-4">
+																<ul>			
+																	<div class="teacher d-flex flex-row align-items-center justify-content-start">					
+																	<li><div class="teacher_title "><a  href="/list/{{question.classsubject.classes|str2url}}/{{question.classsubject.subject|str2url}}/{{question.ques_level|str2url}}/{{question.id}}">{{forloop.counter}}. {{question.title}}</a></div></li>
+																	</div>
+																<ul>
+															</div>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+											</div>
+										
+									</div>
+				</div>			 
+					<div class="tab-pane " role="tabpanel" id="menu8" style="margin:50px 50px">			 
+												
+										<div class="container">
+											<div class="row">
+												{% if request.session.email %}									
+													{% for question in questions_list %}
+														{% if question.ques_level == "Hard" %}
+															<div class="col-sm-4">
+																<ul>			
+																	<div class="teacher d-flex flex-row align-items-center justify-content-start">					
+																	<li><div class="teacher_title "><a  href="/list/{{question.classsubject.classes|str2url}}/{{question.classsubject.subject|str2url}}/{{question.ques_level|str2url}}/{{question.id}}">{{forloop.counter}}. {{question.title}}</a></div></li>
+																	</div>
+																<ul>
+															</div>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+											</div>
+										
+									</div>
+				</div>			 
+				</div>
+				</div>
+				</div>
+				
+				
+				
+				
+				<div class="tab-pane " role="tabpanel" id="menu1" style="margin:50px 50px">
+
+					
+						<div class="tab_panels">
+					
+							{% comment %} <ul class="nav nav-pills nav-fill navtop">
+								<li class="nav-item">
+									<a class="nav-link active fa fa-book" href="#menu3" data-toggle="tab" style=" font-size:20px"> ই-বুক</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link fa fa-internet-explorer" href="#menu5" data-toggle="tab" style=" font-size:20px" > ইন্টারনেটের তথ্য</a >
+								</li>
+									<li class="nav-item">
+										<a class="nav-link fa fa-television" href="#menu4" data-toggle="tab" style=" font-size:20px" > ভিডিও</a >
+									</li>
+								
+								
+								
+							</ul> {% endcomment %}
+						<div class="tab-content ">
+
+					<div class="tab-pane active" role="tabpanel" id="menu3" style="margin:50px 50px">			 
+						<div class="pdf-viewer-area mg-b-15">
+							<div class="container-fluid">
+								<div class="row">
+								{% for link in internet %}
+									<div class="col-sm-4">
+										<ul>			
+											<div class="teacher d-flex flex-row align-items-center justify-content-start">					
+											<li><div class="teacher_title ">{{link.link|safe}}</div></li>
+											</div>
+										<ul>
+									</div>
+								{% endfor %}
+									
+								</div>
+							</div>
+						</div>
+				</div>			 
+					{% comment %} <div class="tab-pane" role="tabpanel" id="menu4" style="margin:50px 50px">	
+					<div class="row">
+					{% if questions_contant_video %}
+						<div class="col-sm-3 nopadding" style="margin: 49px;">
+							<div class="embed-responsive embed-responsive-16by9">
+							{{questions_contant_video.subjectchapter.Chapter_video_1|safe}}
+							</div>
+						</div>
+						<div class="col-sm-3 nopadding" style="margin: 49px;">
+							<div class="embed-responsive embed-responsive-16by9">
+							{{questions_contant_video.subjectchapter.Chapter_video_2|safe}}
+							</div>
+						</div>
+						
+						<div class="col-sm-3 nopadding" style="margin: 49px;">
+							<div class="embed-responsive embed-responsive-16by9">
+							{{questions_contant_video.subjectchapter.Chapter_video_3|safe}}
+							</div>
+						</div>
+						
+						<div class="col-sm-3 nopadding" style="margin: 49px;">
+							<div class="embed-responsive embed-responsive-16by9">
+							{{questions_contant_video.subjectchapter.Chapter_video_4|safe}}
+							</div>
+						</div>
+						<div class="col-sm-3 nopadding" style="margin: 49px;">
+							<div class="embed-responsive embed-responsive-16by9">
+							{{questions_contant_video.subjectchapter.Chapter_video_5|safe}}
+							</div>
+						</div>
+						<div class="col-sm-3 nopadding" style="margin: 49px;">
+							<div class="embed-responsive embed-responsive-16by9">
+							{{questions_contant_video.subjectchapter.Chapter_video_6|safe}}
+							</div>
+						</div>
+					{% else %}
+						<h1>This option will open by your performance<h1>
+					{% endif %}
+					</div>
+									
+					</div>
+
+
+
+	
+
+
+
+
+
+
+
+
+					<div class="tab-pane" role="tabpanel" id="menu5" style="margin:50px 50px">			 
+					{% if questions_contant_e %}
+						<div class="pdf-viewer-area mg-b-15">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									</div>
+									<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+										<div class="pdf-single-pro">
+											<a class="media" href="/static/blogapp/media/{{questions_contant_e.subjectchapter.Chapter_pdf_internet}}"></a>
+										</div>
+									</div>
+									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						{% else %}
+						<h1>This option will open by your performance<h1>
+					{% endif %}
+				</div>			  {% endcomment %}
+				</div>
+				</div>
+				</div>
+						
+					</div>
+				</div>
+				
+
+					
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+
+<div class="language">
+					<div class="tab-pane" role="tabpanel" id="menu2">
+					<div class="tab_panels">
+					
+							<ul class="nav nav-pills nav-fill navtop">
+								<li class="nav-item">
+									<a class="nav-link active fa fa-battery-empty" href="#menu6" data-toggle="tab" style=" font-size:20px"> Easy</a>
+								</li>
+								<li class="nav-item">
+									
+										<a class="nav-link fa fa-battery-half"  href="#menu7" data-toggle="tab" style=" font-size:20px" > Medium</a >
+								</li>
+								<li class="nav-item">
+									{% if request.session.email %}
+										<a class="nav-link fa fa-battery-full" href="#menu8" data-toggle="tab" style=" font-size:20px" > Hard</a >
+									{% else %}
+										<div class="user"><i class="fa fa-lock" aria-hidden="true"> Medium<span class="tooltiptext" >login to open</span></i></div>
+									{% endif %}
+								</li>
+								
+							</ul>
+						<div class="tab-content ">
+
+								<div class="tab-pane active" role="tabpanel" id="menu6" style="margin:50px 50px">			 
+																
+										<div class="container">
+											<div class="row">									
+													{% for question in questions_list %}
+														{% if question.ques_level == "Easy" %}
+														
+															<div class="col-sm-4">
+																<ul>			
+																	<div class="teacher d-flex flex-row align-items-center justify-content-start">					
+																	<li><div class="teacher_title "><a  href="/{{question.classsubject.classes|str2url}}/{{question.classsubject.subject|str2url}}/{{question.ques_level|str2url}}/{{question.id}}">{{forloop.counter}}. {{question.title}}</a></div></li>
+																	</div>
+																<ul>
+															</div>
+														{% endif %}
+													{% endfor %}
+											</div>
+										
+									</div>
+							</div>			 
+					<div class="tab-pane" role="tabpanel" id="menu7" style="margin:50px 50px">			 
+						<div class="teacher d-flex flex-row align-items-center justify-content-start">								
+										<div class="container">
+											<div class="row">	
+											{% if request.session.email %}								
+													{% for question in questions_list %}
+														{% if question.ques_level == "Medium" %}
+															<div class="col-sm-4">
+																<ul>			
+																					
+																	<li><div class="teacher_title"><a href="/{{question.classsubject.classes|str2url}}/{{question.classsubject.subject|str2url}}/{{question.ques_level|str2url}}/{{question.id}}">{{forloop.counter}}. {{question.title}}</a></div></li>
+																<ul>
+															</div>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+											</div>
+										</div>
+									</div>
+				</div>			 
+					<div class="tab-pane " role="tabpanel" id="menu8" style="margin:50px 50px">			 
+						<div class="teacher d-flex flex-row align-items-center justify-content-start">								
+										<div class="container">
+											<div class="row">
+												{% if request.session.email %}									
+													{% for question in questions_list %}
+														{% if question.ques_level == "Hard" %}
+															<div class="col-sm-4">
+																<ul>			
+																					
+																	<li><div class="teacher_title"><a href="/{{question.classsubject.classes|str2url}}/{{question.classsubject.subject|str2url}}/{{question.ques_level|str2url}}/{{question.id}}">{{forloop.counter}}. {{question.title}}</a></div></li>
+																<ul>
+															</div>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+											</div>
+										</div>
+									</div>
+				</div>			 
+				</div>
+				</div>
+				
+				
+				</div>
+						
+					</div>
+				</div>
+				
+
+					
+	</div>  {% endcomment %}
+
+{% endblock %}

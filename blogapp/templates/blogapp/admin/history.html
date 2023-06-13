@@ -1,0 +1,89 @@
+{% extends 'blogapp/admin/base.html' %}
+{% load staticfiles %}
+{% load data_load %}
+{% block meta_description %} {{ seo_contain.seo_discription }} {% endblock %}
+{% block meta_keywords %} {{ seo_contain.seo_keyword }} {% endblock %}
+{% block meta_title %} {{ seo_contain.seo_title }} {% endblock %}
+{% block content %}
+
+        <!-- Static Table Start -->
+        <div class="data-table-area mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sparkline13-list">
+                            <div class="sparkline13-hd">
+                                <div class="main-sparkline13-hd">
+                                    <h1>Your History</h1>
+                                </div>
+                            </div>
+                            <div class="sparkline13-graph">
+                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                    <div id="toolbar">
+                                        <select class="form-control dt-tb">
+											<option value="">Export Basic</option>
+											<option value="all">Export All</option>
+											<option value="selected">Export Selected</option>
+										</select>
+                                    </div>
+                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                        data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th data-field="id">Answare No</th>
+                                                <th data-field="name" data-editable="true">Question</th>      
+                                                
+                                                <th data-field="date" data-editable="true">Answared</th>
+                                                <th data-field="task" data-editable="true">Language</th>
+                                                <th data-field="price" data-editable="true">Time takes</th>
+                                                <th data-field="action">Right/Wrong</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for table in user_history %}
+                                                <tr> 
+                                                    <td>{{ forloop.revcounter}}</td>
+                                                    
+                                                    <td>{{table.question}}</td> 
+                                                    
+                                                    {% if table.text_choose %}
+                                                        <td>{{table.text_choose}}</td>
+                                                    {% else %}
+                                                        <td>
+                                                        {% if table.ans_choose_op_1 %}
+                                                            {{table.question.text_op_1}}
+                                                        {% endif %}
+                                                        {% if table.ans_choose_op_2 %}
+                                                             {{table.question.text_op_2}}
+                                                        {% endif %}
+                                                        {% if table.ans_choose_op_3 %}
+                                                             {{table.question.text_op_3}}
+                                                        {% endif %}
+                                                        {% if table.ans_choose_op_4 %}
+                                                            {{table.question.text_op_4}}
+                                                        {% endif %}
+                                                        </td>
+                                                    {% endif %}
+                                                    <td>{{table.question.classsubject.classes}}</td>
+                                                   
+                                                    <td>{{table.taketime}}</td>
+                                                    {% if table.is_correct_ans is True %}
+                                                        <td class="datatable-ct" ><i class="fa fa-check"style="color:green"></i>
+                                                        </td>
+                                                    {% else %}
+                                                        <td class="datatable-ct"><i class="fa fa-times"style="color:red"></i>
+                                                        </td>
+                                                    {% endif %}
+                                                </tr>
+                                            {% endfor %}      
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

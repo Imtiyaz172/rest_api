@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+{% load data_load %}
+<title>QuizCoding</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Lingua project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="title" content="{% block meta_title %} {% endblock %}">
+<meta name="description" content="{% block meta_description %} {% endblock %}">
+<meta name="keywords" content="{% block meta_keywords %} {% endblock %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'blogapp/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/responsive.css' %}">
+<link href="{% static 'blogapp/plugins/video-js/video-js.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/courses.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/instructors.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/instructors_responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/courses_responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/course.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/course_responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/contact.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/styles/contact_responsive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blogapp/sweetalart/sweetalert.css' %}">
+<link href="{% static 'blogapp/styles/style3.css' %}" rel="stylesheet">
+
+
+
+<link href="{% static 'blogapp/styles/font.css' %}" rel="stylesheet">
+</head>
+<body onload="start()" style="background: #f4f9fd">
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+			
+		<!-- Top Bar -->
+		<div class="top_bar">
+			<div class="top_bar_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+							{% for phn in about_us|aboutus|slice:"1" %}
+								<div class="top_bar_phone"><span class="top_bar_title">phone:</span>{{phn.phone}}</div>
+								<div class="top_bar_right ml-auto">
+									{% endfor %}
+									<!-- Language -->
+									<div class="top_bar_lang">
+										<!-- <span class="top_bar_title">site language:</span>
+										<ul class="lang_list">
+											<li class="hassubs">
+												<a href="#">English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<ul>
+													<li><a href="#">Ukrainian</a></li>
+													<li><a href="#">Japanese</a></li>
+													<li><a href="#">Lithuanian</a></li>
+													<li><a href="#">Swedish</a></li>
+													<li><a href="#">Italian</a></li>
+												</ul>
+											</li>
+										</ul> -->
+
+										{% comment %} <input type="email" name="" id="">
+										<input type="password" name="" id="">
+										<button class="btn btn-primary" type="submit" style="font-size: 7px;">Login</button>
+										 {% endcomment %}
+
+									</div>
+
+									<!-- Social -->
+									{% for phn in about_us|aboutus|slice:"1" %}
+									<div class="top_bar_social">
+										<span class="top_bar_title social_title">follow us</span>
+										<ul>
+											<li><a href="{{phn.facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+											<li><a href="{{phn.twiter}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>				
+		</div>
+
+		<!-- Header Content -->
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<div class="logo_container mr-auto">
+							{% for phn in about_us|aboutus|slice:"3" %}
+								<a href="/">
+									{% comment %} <div class="logo_text">QuizCoding</div> {% endcomment %}
+									<div class="logo_text"><img src="/static/blogapp/media/{{phn.logo}}" alt=""></div>	
+								</a>
+							{% endfor %}
+							</div>
+							<nav class="main_nav_contaner">
+							
+                            
+
+								<ul class="main_nav">
+									<li class="active"><a href="/">Home</a></li>
+									{% for cls in classes|classesreg %}
+										<li><a href="/list/{{cls.name}}">{{cls.name}}</a></li>
+									{% endfor %}
+									<li><a href="/about/">About Website</a></li>
+									<li><a href="/contact/">Contact</a></li>
+								</ul>
+								
+							</nav>
+							<div class="header_content_right ml-auto text-right">
+								{% comment %} <div class="header_search">
+									<div class="search_form_container">
+										<form action="#" id="search_form" class="search_form trans_400">
+											<input type="search" class="header_search_input trans_400" placeholder="Type for Search" required="required">
+											<div class="search_button">
+												<i class="fa fa-search" aria-hidden="true"></i>
+											</div>
+										</form>
+									</div>
+								</div> {% endcomment %}
+
+								<!-- Hamburger -->
+								{% if request.session.email %}
+									<div class="user"><a href="/dashboard/"><i class="fa fa-user" aria-hidden="true"><span class="tooltiptext">My panel</span></i></a></div>
+									<div class="user"><a href="/logout/"><i class="fa fa-sign-out" aria-hidden="true"><span class="tooltiptext">Logout</span></i></a></div>
+								{% else %}
+									<div class="user"><a href="/user-reg/"><i class="fa fa-plus" aria-hidden="true"><span class="tooltiptext">Create account</span></i></a></div>
+									<div class="user"><a href="/login/"><i class="fa fa-sign-in" aria-hidden="true"><span class="tooltiptext">Login</span></i></a></div>
+								{% endif %}
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<!-- Menu -->
+
+	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+		<div class="search">
+			<form action="#" class="header_search_form menu_mm">
+				<input type="search" class="search_input menu_mm" placeholder="Search" required="required">
+				<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
+					<i class="fa fa-search menu_mm" aria-hidden="true"></i>
+				</button>
+			</form>
+			{% if request.session.email %}
+					<div class="user"><a href="/dashboard/"><i class="fa fa-user" aria-hidden="true"><span class="tooltiptext" >My panel</span></i></a></div>
+					<div class="user"><a href="/logout/"><i class="fa fa-sign-out" aria-hidden="true"><span class="tooltiptext">Logout</span></i></a></div>
+			{% else %}
+					<div class="user"><a href="/user-reg/"><i class="fa fa-plus" aria-hidden="true"><span class="tooltiptext">Create account</span></i></a></div>
+					<div class="user"><a href="/login/"><i class="fa fa-sign-in" aria-hidden="true"><span class="tooltiptext">Login</span></i></a></div>
+			{% endif %}
+		</div>
+		<nav class="menu_nav">
+			<ul class="menu_mm">
+				<li class="active"><a href="/">Home</a></li>
+				{% for cls in classes|classesreg %}
+					<li><a href="/list/{{cls.name}}">{{cls.name}}</a></li>
+				{% endfor %}
+				<li><a href="/about/">About Website</a></li>
+				<li><a href="/contact/">Contact</a></li>
+				
+			</ul>
+		</nav>
+		
+		<div class="menu_extra">
+		
+		{% for phn in about_us|aboutus|slice:"1" %}
+			<div class="menu_phone"><span class="menu_title">phone:</span>{{phn.phone}}</div>
+			<div class="menu_social">
+				<span class="menu_title">follow us</span>
+				<ul>
+					<li><a href="{{phn.facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="{{phn.twiter}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+
+
+
+        {% block content %}
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="footer_body">
+			<div class="container">
+				<div class="row">
+
+					<!-- Newsletter -->
+					<div class="col-lg-3 footer_col">
+						<div class="newsletter_container d-flex flex-column align-items-start justify-content-end">
+							<div class="footer_logo mb-auto"><a href="/">QuizCoding</a></div>
+							{% comment %} <div class="footer_title">Subscribe</div>
+							<form action="#" id="newsletter_form" class="newsletter_form">
+								<input type="email" class="newsletter_input" placeholder="Email" required="required">
+								<button class="newsletter_button"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+							</form> {% endcomment %}
+						</div>
+					</div>
+
+					<!-- About -->
+					<div class="col-lg-2 offset-lg-3 footer_col">
+						<div>
+							<div class="footer_title">About Us</div>
+							{% comment %} <ul class="footer_list">
+								<li><a href="#">Courses</a></li>
+								<li><a href="#">Team</a></li>
+								<li><a href="#">Brand Guidelines</a></li>
+								<li><a href="#">Jobs</a></li>
+								<li><a href="#">Advertise with us</a></li>
+								<li><a href="#">Press</a></li>
+								<li><a href="#">Contact us</a></li>
+							</ul> {% endcomment %}
+						</div>
+					</div>
+
+					<!-- Help & Support -->
+					<div class="col-lg-2 footer_col">
+						<div class="footer_title">Help & Support</div>
+						{% comment %} <ul class="footer_list">
+							<li><a href="#">Discussions</a></li>
+							<li><a href="#">Troubleshooting</a></li>
+							<li><a href="#">Duolingo FAQs</a></li>
+							<li><a href="#">Schools FAQs</a></li>
+							<li><a href="#">Duolingo English Test FAQs</a></li>
+							<li><a href="#">Status</a></li>
+						</ul> {% endcomment %}
+					</div>
+
+					<!-- Privacy -->
+					<div class="col-lg-2 footer_col clearfix">
+						<div>
+							<div class="footer_title">Privacy & Terms</div>
+							{% comment %} <ul class="footer_list">
+								<li><a href="#">Community Guidelines</a></li>
+								<li><a href="#">Terms</a></li>
+								<li><a href="#">Brand Guidelines</a></li>
+								<li><a href="#">Privacy</a></li>
+							</ul> {% endcomment %}
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="copyright_content d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
+							<div class="cr">© 2021 QuizCOding. All rights reserved.</div>
+							<div class="cr_right ml-md-auto">
+							{% for phn in about_us|aboutus|slice:"1" %}
+								<div class="footer_phone"><span class="cr_title">phone:</span>{{phn.phone}}</div>
+								<div class="footer_social">
+									<span class="cr_social_title">follow us</span>
+									<ul>
+										<li><a href="{{phn.facebook}}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+										{% comment %} <li><a href="{{phn.insta}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> {% endcomment %}
+										<li><a href="{{phn.twiter}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+<script src="{% static 'blogapp/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'blogapp/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'blogapp/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'blogapp/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'blogapp/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'blogapp/js/custom.js' %}"></script>
+<script src="{% static 'blogapp/js/courses.js' %}"></script>
+<script src="{% static 'blogapp/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'blogapp/plugins/progressbar/progressbar.min.js' %}"></script>
+<script src="{% static 'blogapp/js/course.js' %}"></script>
+<script src="{% static 'blogapp/js/pagination.js' %}"></script>
+<script src="{% static 'blogapp/js/custom2.js' %}"></script>
+<script src="{% static 'blogapp/sweetalart/sweetalert.js' %}"></script>
+<!-- pdf JS
+		============================================ -->
+    <script src="{% static 'blogapp/admin/js/pdf/jquery.media.js' %}"></script>
+    <script src="{% static 'blogapp/admin/js/pdf/pdf-active.js' %}"></script>
+
+<script type="text/javascript">
+            $(document).ready(function() {
+            $("input[type=radio]").prop("checked", false);
+            $("input[type=radio]:first").prop("checked", false);
+
+            $("input[type=radio]").click(function(event) {
+                $("input[type=radio]").prop("checked", false);
+                $(this).prop("checked", true);
+
+                //event.preventDefault();
+            });
+            });
+	</script>
+
+</body>
+</html>

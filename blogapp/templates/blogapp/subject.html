@@ -1,0 +1,276 @@
+{% extends 'blogapp/base.html' %}
+{% load staticfiles %}
+{% load data_load %}
+
+{% block meta_title %}
+{% regroup subjects by classes as classes_list %}
+{% for sub in classes_list %}
+
+{{ sub.grouper.seo_title }}
+{% endfor %} 
+{% endblock %}
+
+{% block meta_description %}
+{% regroup subjects by classes as classes_list %}
+{% for sub in classes_list %}
+
+{{ sub.grouper.seo_discription }}
+{% endfor %} 
+{% endblock %}
+
+{% block meta_keywords %}
+{% regroup subjects by classes as classes_list %}
+{% for sub in classes_list %}
+{{ sub.grouper.seo_keyword }} 
+{% endfor %} 
+{% endblock %}
+
+{% block content %}	
+
+
+
+
+
+	<!-- Home -->
+	<!-- Language -->
+
+	<div class="language">
+	{% regroup subjects by classes as classes_list %}
+	{% for sub in classes_list %}
+	<center><div class="logo_text">Select {{sub.grouper}} Topic</div></center>
+	{% endfor %}
+		<div class="container">
+			<div class="row">
+		
+			
+{% for sub in subjects %}
+	{% if forloop.counter == 1 or forloop.counter == 9 or forloop.counter == 17 %}
+	<div class="card-wrapper flip-right">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+  
+  {% elif forloop.counter == 2 or forloop.counter == 10 or forloop.counter == 18 %}
+	<div class="card-wrapper flip-left">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+ 
+ 
+  {% elif forloop.counter == 3 or forloop.counter == 11 or forloop.counter == 19 %}
+	  <div class="card-wrapper flip-up">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+
+
+  {% elif forloop.counter == 4 or forloop.counter == 12 or forloop.counter == 20 %}
+ <div class="card-wrapper flip-down">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+
+  
+  {% elif forloop.counter == 5 or forloop.counter == 13 or forloop.counter == 21 %}
+  <div class="card-wrapper flip-diagonal-right">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+
+
+  {% elif forloop.counter == 6 or forloop.counter == 14 or forloop.counter == 22 %}
+  <div class="card-wrapper flip-diagonal-left">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+
+
+  {% elif forloop.counter == 7 or forloop.counter == 15 or forloop.counter == 23 %}
+  <div class="card-wrapper flip-inverted-diagonal-right">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+
+  {% elif forloop.counter == 8 or forloop.counter == 16 or forloop.counter == 24 %}
+  <div class="card-wrapper flip-inverted-diagonal-left">
+	<div class="card">
+	  <div class="front">{{sub.subject.name}}</div>
+	  <div class="back">
+		  <a style="color:black" style="color:black" href="/list/{{sub.classes.name|str2url}}/{{sub.subject.name|str2url}}">Start Test</a>
+	  </div>
+	</div>
+  </div>
+
+  {% endif %}
+ 
+{% endfor %}
+{% comment %} <div class="card-wrapper flip-right">
+	<div class="card">
+	  <div class="front">Data tye</div>
+	  <div class="back">
+		  <a href="faceook.com">Start Test</a>
+	  </div>
+	</div>
+  </div>
+  <div class="card-wrapper flip-left">
+	<div class="card">
+	  <div class="front">String</div>
+	  <div class="back">BACK</div>
+	</div>
+  </div>
+  <div class="card-wrapper flip-up">
+	<div class="card">
+	  <div class="front">Mathmatical</div>
+	  <div class="back">BACK</div>
+	</div>
+  </div>
+  <div class="card-wrapper flip-down">
+	<div class="card">
+	  <div class="front">flip down</div>
+	  <div class="back">BACK</div>
+	</div>
+  </div>
+  <div class="card-wrapper flip-diagonal-right">
+	<div class="card">
+	  <div class="front">flip diagonal right</div>
+	  <div class="back">BACK</div>
+	</div>
+  </div>
+  <div class="card-wrapper flip-diagonal-left">
+	<div class="card">
+	  <div class="front">flip diagonal left</div>
+	  <div class="back">BACK</div>
+	</div>
+  </div>
+  <div class="card-wrapper flip-inverted-diagonal-right">
+	<div class="card">
+	  <div class="front">flip inverted diagonal right</div>
+	  <div class="back">BACK</div>
+	</div>
+  </div>
+  <div class="card-wrapper flip-inverted-diagonal-left">
+	<div class="card">
+	  <div class="front">flip inverted diagonal left</div>
+	  <div class="back">BACK</div>
+	</div>
+  </div> {% endcomment %}
+
+<!-- 
+<br>	
+				<div class="col">
+					<center><div class="language_title">বিষয় বাছুন</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="language_slider_container">
+						
+						
+
+						<div class="owl-carousel owl-theme language_slider">
+
+							
+							
+							    {% for subject in subjects %}
+								
+										
+											<div class="owl-item language_item">
+												<a href="/{{subject.class_name|str2url}}/{{subject.name|str2url}}">
+													<div class="flag"><img src="/static/blogapp/media/{{subject.image}}" alt=""></div>
+													<div class="lang_name">{{subject.name}}</div>
+												</a>
+											</div>
+									
+								{% endfor %}
+							
+							
+
+						</div>
+
+						<div class="lang_nav lang_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+						<div class="lang_nav lang_next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+	<div class="teachers">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h2 class="section_title text-center">{{subjects_questions.0.subjectchapter.classsubject.subject.name}}</h2>
+				</div>
+			</div>
+			<div class="row teachers_row">
+
+				
+				
+				<div class="col-lg-12">
+					<div class="teacherhov">
+					<div class="teacher_name">অধ্যায় বাছুন</div>
+						<div class="teacher d-flex flex-row align-items-center justify-content-start">								
+							<div class="container">
+								<div class="row">									
+										{% comment %} {% regroup subjects_questions by subjectchapter as chapter_list %}
+										{% for chapter in chapter_list %}  {% endcomment %}
+										{% for chapter in subjects_chapter %}  
+										
+											<div class="col-sm-4">
+												<ul>							
+													<li><div class="teacher_title"><a href="/{{chapter.classsubject.classes|str2url}}/{{chapter.classsubject.subject|str2url}}/{{chapter.chapter.name|str2url}}">{{chapter.chapter.name}}</a></div></li>
+													
+												<ul>
+											</div>
+										{% endfor %}
+								</div>
+							</div>
+						</div>	
+						</div>
+						
+				</div>
+				 -->
+				
+
+				              
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+{% endblock %}

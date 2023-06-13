@@ -1,0 +1,375 @@
+{% extends 'blogapp/base.html' %}
+{% load staticfiles %}
+{% load data_load %}
+{% block meta_description %} {{ seo_contain.seo_discription }} {% endblock %}
+{% block meta_keywords %} {{ seo_contain.seo_keyword }} {% endblock %}
+{% block meta_title %} {{ seo_contain.seo_title }} {% endblock %}
+{% block content %}	
+	
+	{% comment %} <script type="text/javascript"> 
+        function preventBack() { 
+            window.history.forward();  
+        } 
+          
+        setTimeout("preventBack()", 0); 
+          
+        window.onunload = function () { null }; 
+    </script> {% endcomment %}
+
+   <script type="text/javascript">
+  
+   </script>
+	<div class="course">
+		<div class="course_top"></div>
+		<div class="course_bottom">
+		<div class="container">
+			<div class="row row-lg-eq-height">
+
+				<!-- Panels -->
+				<div class="col-lg-9">
+					{% if messages %}
+									<ul class="messages">
+										{% for message in messages %}
+										<center><li{% if message.tags %} class="{{ message.tags }}"{% endif %}><h4 style="color:green">{{ message }}</h4></li>
+										{% endfor %}
+											{% for star in get_star %}
+												{% if star.star == 0 %}
+												{% elif star.star == 1 %}
+												<center><li><h4 style="color:green;"> আপনি পেয়েছেন </h4></li>
+													<li class="fa fa-star" style="color:red; font-size:30px"></li>
+												{% elif star.star == 2 %}
+												<center><li><h4 style="color:green"> আপনি পেয়েছেন </h4></li>
+													<li class="fa fa-star" style="color:#fbbc01; font-size:30px"></li>
+													<li class="fa fa-star" style="color:#fbbc01; font-size:30px"></li>
+												{% elif star.star == 3 %}
+												<center><li><h4 style="color:green"> আপনি পেয়েছেন </h4></li>
+													<li class="fa fa-star" style="color:blue; font-size:30px"></li>
+													<li class="fa fa-star" style="color:blue; font-size:30px"></li>
+													<li class="fa fa-star" style="color:blue; font-size:30px"></li>
+												{% elif star.star == 4 %}
+												<center><li><h4 style="color:green"> আপনি পেয়েছেন </h4></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+												{% elif star.star == 5 %}
+												<center><li><h4 style="color:green"> আপনি পেয়েছেন </h4></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+													<li class="fa fa-star" style="color:green; font-size:30px"></li>
+												{% endif %}
+											{% endfor %}
+									</ul>
+									{% endif %}
+					
+				{% if questions.ques_type == "text" %}
+						<!-- Description -->
+						<div class="tab_panel description active">
+							<div class="panel_title">{{questions.title}}</div>
+							<div class="panel_text">
+								<img src="/static/blogapp/media/{{questions.image}}" alt=""><br>
+									<p>{{questions.body|safe}}</p>
+									<div class="qtoform">
+										<form action="" method="POST"> {% csrf_token %}
+										 <li class="laps"></li>
+											<input type="text" name="direct_input_op" id="">					
+											<button class="btn btn-primary" type="submit" onclick="pause()">Submit Ans</button>
+										</form>	
+									</div>									 
+							</div>				
+						</div>
+
+				{% elif questions.ques_type == "Multiple_image" %}
+						<div class="tab_panel description active">
+							<div class="panel_title">{{questions.title}}</div>
+							<div class="panel_text">
+							<img src="/static/blogapp/media/{{questions.image}}" alt=""><br>
+									<p>{{questions.body|safe}}</p>									
+								<div class="kudos-wrap">
+									<div class="qtoform">
+									<form action="" method="POST">{% csrf_token %}
+									<ul>
+									 <li><input type="checkbox" id="cb1" name="ans_op_1" value="True"/>
+									   <label for="cb1"><img src="/static/blogapp/media/{{questions.img_op_1}}" /></label>
+									 </li>
+									 <li><input type="checkbox" id="cb2" name="ans_op_2" value="True"/>
+									   <label for="cb2"><img src="/static/blogapp/media/{{questions.img_op_2}}" /></label>
+									 </li>
+									 <li><input type="checkbox" id="cb3" name="ans_op_3" value="True"/>
+									   <label for="cb3"><img src="/static/blogapp/media/{{questions.img_op_3}}" /></label>
+									 </li>
+									 <li><input type="checkbox" id="cb4" name="ans_op_4" value="True"/>
+									   <label for="cb4"><img src="/static/blogapp/media/{{questions.img_op_4}}" /></label>
+									 </li>
+									 <li class="laps"></li>
+								   </ul>
+								   <button class="btn btn-primary" type="submit"  onclick="pause()">Submit Ans</button>
+								</form>
+								 </div>
+								 </div>
+							</div>
+						</div>
+
+					{% elif questions.ques_type == "image" %}
+						<div class="tab_panel description active">
+							<div class="panel_title">{{questions.title}}</div>
+							<div class="panel_text">
+							<img src="/static/blogapp/media/{{questions.image}}" alt=""><br>
+									<p>{{questions.body|safe}}</p>
+									
+								<div class="kudos-wrap">
+								<div class="qtoform">
+									<form action="" method="POST">{% csrf_token %}
+									<ul>
+									 <li>
+
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="ans_op_1" id="exampleRadios1" value="True">
+											<label class="form-check-label" for="exampleRadios1">
+												<img src="/static/blogapp/media/{{questions.img_op_1}}" />
+											</label>
+									</div>
+									 </li>
+									 <li>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="ans_op_2" id="exampleRadios2" value="True">
+											<label class="form-check-label" for="exampleRadios2">
+												<img src="/static/blogapp/media/{{questions.img_op_2}}" />
+											</label>
+									</div>
+									 </li>
+									 <li>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="ans_op_3" id="exampleRadios3" value="True">
+											<label class="form-check-label" for="exampleRadios3">
+												<img src="/static/blogapp/media/{{questions.img_op_3}}" />
+											</label>
+									</div>
+									 </li>
+									 <li>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="ans_op_4" id="exampleRadios4" value="True">
+											<label class="form-check-label" for="exampleRadios4">
+												<img src="/static/blogapp/media/{{questions.img_op_4}}" />
+											</label>
+									</div>
+									
+									 </li>
+									 <li class="laps"></li>
+								   </ul>
+								   <button class="btn btn-primary" type="submit" onclick="pause()">Submit Ans</button>
+								</form>
+								 </div>
+								 </div>
+							</div>
+				
+				
+						</div>
+
+					{% elif questions.ques_type == "MCQ" %}		
+						<div class="tab_panel description active">
+						<p>{{questions.body|safe}}</p>
+							<div class="panel_title">{{questions.title}}</div>
+							{% if questions.image %}
+							
+								<img src="/static/blogapp/media/{{questions.image}}" alt=""><br>
+							{% endif %}
+							
+									
+							<div class="panel_text">
+								<form action="" method="POST">{% csrf_token %}
+									<ul class="chec-radio">
+										
+											<li class="pz">
+												<label class="radio-inline">
+													<input type="radio" id="pro-chx-residential" name="ans_op_1" class="pro-chx" value="True">
+													<div class="clab">{{questions.text_op_1}}</div>
+												</label>
+											</li>
+											<li class="pz">
+												<label class="radio-inline">
+													<input type="radio" id="pro-chx-commercial" name="ans_op_2" class="pro-chx" value="True" >
+													<div class="clab">{{questions.text_op_2}}</div>
+												</label>
+											</li>
+											<li class="pz">
+												<label class="radio-inline">
+													<input type="radio" id="pro-chx-open" name="ans_op_3" class="pro-chx" value="True">
+													<div class="clab">{{questions.text_op_3}}</div>
+												</label>
+											</li>
+											<li class="pz">
+												<label class="radio-inline">
+													<input type="radio" id="pro-chx-close" name="ans_op_4" class="pro-chx" value="True">
+													<div class="clab">{{questions.text_op_4}}</div>
+												</label>
+											</li>
+											<li class="laps"></li>
+											
+									</ul>
+									<button class="btn btn-primary" type="submit" onclick="pause()">Submit Ans</button>
+										</form>
+							</div>
+						</div>
+					
+					{% elif questions.ques_type == "Multiple_MCQ" %}
+
+						<div class="tab_panel description active">
+						<p>{{questions.body|safe}}</p>
+							<div class="panel_title">{{questions.title}}</div>
+							<div class="panel_text">
+							<img src="/static/blogapp/media/{{questions.image}}" alt=""><br>
+									
+								<div class="qtoform">	
+								<form action="" method="POST">{% csrf_token %}
+									<ul class="chec-radio">
+										<li class="pz">
+											<label class="radio-inline">
+												<input type="checkbox" id="cb1" name="ans_op_1"  value="True"/>
+												<div class="clab">{{questions.text_op_1}}</div>		
+											</label>
+										</li>
+										<li class="pz">
+											<label class="radio-inline">
+												<input type="checkbox" id="cb2" name="ans_op_2" class="pro-chx" value="True" />
+												<div class="clab">{{questions.text_op_2}}</div>	
+											</label>
+										</li>
+										<li class="pz">
+											<label class="radio-inline">
+												<input type="checkbox" id="cb3" name="ans_op_3" class="pro-chx" value="True"/>
+												<div class="clab">{{questions.text_op_3}}</div>	
+												
+											</label>
+										</li>
+										<li class="pz">
+											<label class="radio-inline">
+												<input type="checkbox" id="cb4" name="ans_op_4" class="pro-chx" value="True"/>
+												<div class="clab">{{questions.text_op_4}}</div>	
+												
+											</label>
+										</li>
+										<li class="laps"></li>
+									</ul>
+									
+								<button class="btn btn-primary" type="submit" id="submit" onclick="pause()">Submit Ans</button>
+								</form>
+							</div>
+							</div>
+						</div>
+						{% endif %}
+				</div>
+				<div class="col-lg-3">
+				<div class="sidebar">
+				<div class="sidebar_section features">
+				<div class="sidebar_title">Taking Time</div>
+				<div class="features_content">
+					<!-- <div class="controls" >
+						<button onclick="start()">Start</button>
+						<button onclick="pause()">Pause</button>
+						<button onclick="stop()">Stop</button>
+						<button onclick="restart()">Restart</button>
+						<button onclick="lap()">Lap</button>
+						<button onclick="resetLaps()">Reset Laps</button>
+					</div> -->
+					
+					<div class="stopwatch" style="font-size: 5em;font-family: monospace;">00:00:00</div>
+					<ul class="laps"></ul>
+					
+					
+				</div>				
+				</div>
+					
+				</div>
+				</div>				
+				</div>
+					
+				</div>
+				
+
+					</div>				
+				</div>
+				
+				
+
+			</div>
+		</div>
+		</div>
+	</div>
+<script type="text/javascript">
+		
+		var ms = 0, s = 0, m = 0;
+		var timer;
+
+		var stopwatchEl = document.querySelector('.stopwatch');
+		var lapsContainer = document.querySelector('.laps');
+
+		function start() {
+			if(!timer) {
+				timer = setInterval(run, 10);
+			}
+		}
+
+		function run() {
+			stopwatchEl.textContent = getTimer();
+			ms++;
+			if(ms == 100) {
+				ms = 0;
+				s++;
+			}
+			if(s == 60) {
+				s = 0;
+				m++;
+			}
+		}
+
+		function pause() {
+			if(timer) {
+				var li = document.createElement('input');
+				li.name = "taketime";
+				li.value = getTimer();
+				li.innerText = getTimer();
+				li.type = "hidden";
+				lapsContainer.appendChild(li);
+			}
+			stopTimer();
+		}
+
+		function stop() {
+			stopTimer();
+			ms = 0;
+			s = 0;
+			m = 0;
+			stopwatchEl.textContent = getTimer();
+		}
+
+		function stopTimer() {
+			clearInterval(timer);
+			timer = false;
+		}
+
+		function getTimer() {
+			return (m < 10 ? "0" + m : m) + "." + (s < 10 ? "0" + s : s) ;
+		}
+
+		function restart() {
+			stop();
+			start();
+		}
+
+		function lap() {
+			if(timer) {
+				var li = document.createElement('li');
+				li.innerText = getTimer();
+				lapsContainer.appendChild(li);
+			}
+		}
+
+		function resetLaps() {
+			lapsContainer.innerHTML = '';
+		}
+
+	</script>
+{% endblock %}

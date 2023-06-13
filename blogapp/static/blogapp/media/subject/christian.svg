@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 392.86 507.14" version="1.0">
+  <defs id="defs4">
+    <filter id="filter3224">
+      <feGaussianBlur id="feGaussianBlur3226" stdDeviation="21.630796"/>
+    </filter>
+    <radialGradient id="radialGradient3232" gradientUnits="userSpaceOnUse" cy="523.72" cx="375.7" gradientTransform="matrix(-1.2365 -.0052564 .0086032 -2.0239 835.77 1555.7)" r="271.78">
+      <stop id="stop3170" stop-color="#fff" offset="0"/>
+      <stop id="stop3172" stop-color="#4d4d4d" stop-opacity=".91071" offset="1"/>
+    </radialGradient>
+  </defs>
+  <g id="layer1" transform="translate(-188.57 -413.79)">
+    <g id="g3228" stroke="#000" stroke-width="6.3332" transform="matrix(.62571 0 0 .62571 150.33 276.96)">
+      <path id="path3176" filter="url(#filter3224)" fill="#060606" d="m380 269.86c-39.77 0-71.78 36.62-71.78 82.09v71.09h-123.31c-42.31 0-76.38 32.2-76.38 72.19s34.07 72.16 76.38 72.16h123.31v322.56c0 45.47 32.01 82.06 71.78 82.06s71.81-36.59 71.81-82.06v-322.56h117.6c42.3 0 76.34-32.17 76.34-72.16s-34.04-72.19-76.34-72.19h-117.6v-71.09c0-45.47-32.04-82.09-71.81-82.09z"/>
+      <path id="rect2385" fill="url(#radialGradient3232)" d="m378.56 271.28c-39.77 0-71.78 36.62-71.78 82.1v71.09h-123.31c-42.31 0-76.38 32.2-76.38 72.19 0 39.98 34.07 72.15 76.38 72.15h123.31v322.57c0 45.47 32.01 82.06 71.78 82.06s71.81-36.59 71.82-82.06v-322.57h117.59c42.3 0 76.34-32.17 76.34-72.15 0-39.99-34.04-72.19-76.34-72.19h-117.59v-71.09c0-45.48-32.05-82.1-71.82-82.1z"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Cross VI</dc:title>
+        <dc:date>2010-05-25T13:35:06</dc:date>
+        <dc:description>A cross made by me!! ...enjoy!</dc:description>
+        <dc:source>http://openclipart.org/detail/62743/cross-vi-by-mystica</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>mystica</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Anglican</rdf:li>
+            <rdf:li>Catholic</rdf:li>
+            <rdf:li>Christ</rdf:li>
+            <rdf:li>Christian</rdf:li>
+            <rdf:li>Jesus</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>cross</rdf:li>
+            <rdf:li>crucify</rdf:li>
+            <rdf:li>religion</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

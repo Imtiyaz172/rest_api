@@ -1,0 +1,5 @@
+font-family: 'Hind Siliguri', sans-serif;
+font-family: 'Mina', sans-serif;
+font-family: 'Galada', cursive;
+font-family: 'Atma', cursive;
+font-family: 'Baloo Da', cursive;
